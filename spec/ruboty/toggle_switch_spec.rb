@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Ruboty::ToggleSwitch do
   let(:robot) { Ruboty::Robot.new }
+  let(:from) { 'alice' }
 
   context 'switch is not on nor off' do
     describe '#toggle' do
@@ -18,6 +19,7 @@ describe Ruboty::ToggleSwitch do
         end
       end
     end
+
     describe '#show' do
       it do
         expect(robot).not_to receive(:say)
@@ -27,7 +29,7 @@ describe Ruboty::ToggleSwitch do
   end
 
   context 'switch is on' do
-    before { robot.receive(body: "#{robot.name} toggle switch on") }
+    before { robot.receive(body: "#{robot.name} toggle switch on", from: from) }
 
     describe '#toggle' do
       context 'turns on' do
@@ -46,14 +48,14 @@ describe Ruboty::ToggleSwitch do
 
     describe '#show' do
       it do
-        expect(robot).to receive(:say).with(hash_including(body: 'switch is on.'))
+        expect(robot).to receive(:say).with(hash_including(body: "switch is on by #{from}."))
         robot.receive(body: "#{robot.name} show switch status")
       end
     end
   end
 
   context 'switch is off' do
-    before { robot.receive(body: "#{robot.name} toggle switch off") }
+    before { robot.receive(body: "#{robot.name} toggle switch off", from: from) }
 
     describe '#toggle' do
       context 'turns on' do
@@ -72,7 +74,7 @@ describe Ruboty::ToggleSwitch do
 
     describe '#show' do
       it do
-        expect(robot).to receive(:say).with(hash_including(body: 'switch is off.'))
+        expect(robot).to receive(:say).with(hash_including(body: "switch is off by #{from}."))
         robot.receive(body: "#{robot.name} show switch status")
       end
     end
