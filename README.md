@@ -1,5 +1,7 @@
 # Ruboty::ToggleSwitch
 
+[![Build Status](https://travis-ci.org/takai/ruboty-toggle_switch.svg?branch=master)](https://travis-ci.org/takai/ruboty-toggle_switch)
+
 ruboty-toggle_switch allows you to toggle switch on/off.
 
 ## Installation
