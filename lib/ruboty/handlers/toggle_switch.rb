@@ -25,9 +25,11 @@ module Ruboty
         switch = message[:switch]
 
         if (record = storage[switch])
-          text = "#{switch} is #{record.state} by #{record.from} "
+          text = "#{switch} is #{record.state} "
+          text << "by #{record.from} " if record.from
           text << "#{record.note} " if record.note
-          text << "#{record.at.strftime('on %b %d at %H:%M')}."
+          text << record.at.strftime('on %b %d at %H:%M')
+          text << '.'
 
           message.reply(text)
         end
