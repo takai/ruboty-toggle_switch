@@ -1,7 +1,7 @@
 module Ruboty
   module ToggleSwitch
     class Storage
-      Record = Struct.new(:state, :from, :at)
+      Record = Struct.new(:state, :from, :at, :note)
 
       NAMESPACE = 'ruboty-toggle_switch-storage'
 
@@ -14,7 +14,7 @@ module Ruboty
       end
 
       def []=(key, value)
-        records[key] = Record.new(value[:state], value[:from], Time.now)
+        records[key] = Record.new(value[:state], value[:from], Time.now, value[:note])
       end
 
       private

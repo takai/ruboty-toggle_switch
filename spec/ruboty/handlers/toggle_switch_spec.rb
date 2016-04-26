@@ -54,6 +54,17 @@ describe Ruboty::ToggleSwitch do
     end
   end
 
+  context 'switch is on with note' do
+    before { robot.receive(body: "#{robot.name} toggle switch on for great good", from: from) }
+
+    describe '#show' do
+      it do
+        expect(robot).to receive(:say).with(hash_including(body: /switch is on by #{from} for great good on \w+ \d+ at \d\d:\d\d/))
+        robot.receive(body: "#{robot.name} show switch status")
+      end
+    end
+  end
+
   context 'switch is off' do
     before { robot.receive(body: "#{robot.name} toggle switch off", from: from) }
 
