@@ -24,7 +24,7 @@ module Ruboty
         switch = message[:switch]
 
         if (record = storage[switch])
-          message.reply("#{switch} is #{record.state} by #{record.from}.")
+          message.reply("#{switch} is #{record.state} by #{record.from} #{record.at.strftime('on %b %d at %H:%M')}.")
         end
       end
 

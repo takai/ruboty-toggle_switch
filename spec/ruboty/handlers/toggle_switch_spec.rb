@@ -48,7 +48,7 @@ describe Ruboty::ToggleSwitch do
 
     describe '#show' do
       it do
-        expect(robot).to receive(:say).with(hash_including(body: "switch is on by #{from}."))
+        expect(robot).to receive(:say).with(hash_including(body: /switch is on by #{from} on \w+ \d+ at \d\d:\d\d/))
         robot.receive(body: "#{robot.name} show switch status")
       end
     end
@@ -74,7 +74,7 @@ describe Ruboty::ToggleSwitch do
 
     describe '#show' do
       it do
-        expect(robot).to receive(:say).with(hash_including(body: "switch is off by #{from}."))
+        expect(robot).to receive(:say).with(hash_including(body: /switch is off by #{from} on \w+ \d+ at \d\d:\d\d/))
         robot.receive(body: "#{robot.name} show switch status")
       end
     end
