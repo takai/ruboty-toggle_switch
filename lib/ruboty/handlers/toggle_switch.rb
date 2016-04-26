@@ -3,8 +3,8 @@ module Ruboty
     class ToggleSwitch < Base
       NAMESPACE = 'toggle_switch'
 
-      on(/toggle\s+(?<switch>.*)\s+(?<state>on|off)/, name: 'toggle', description: 'Toggle switch')
-      on(/show\s+(?<switch>.*)\s+status/, name: 'show', description: 'Show switch status')
+      on(/toggle\s+(?<switch>.*)\s+(?<state>on|off)\z/, name: 'toggle', description: 'Toggle switch')
+      on(/show\s+(?<switch>.*)\s+status\z/, name: 'show', description: 'Show switch status')
 
       def toggle(message)
         switch = message[:switch]
