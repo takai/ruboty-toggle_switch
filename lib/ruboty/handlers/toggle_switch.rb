@@ -10,10 +10,12 @@ module Ruboty
         switch = message[:switch]
         state = message[:state]
 
-        if switches_state(switch) == state
+        storage_state = storage[switch] && storage[switch].state
+
+        if storage_state == state
           message.reply("#{switch} is already #{state}.")
         else
-          switches[switch] = {state: state, from: message.from_name}
+          storage[switch] = {state: state, from: message.from_name}
           message.reply("#{switch} is now #{state}.")
         end
       end
@@ -21,23 +23,15 @@ module Ruboty
       def show(message)
         switch = message[:switch]
 
-        if (state = switches_state(switch))
-          message.reply("#{switch} is #{state} by #{switches_from(switch)}.")
+        if (record = storage[switch])
+          message.reply("#{switch} is #{record.state} by #{record.from}.")
         end
       end
 
       private
 
-      def switches
-        robot.brain.data[NAMESPACE] ||= {}
-      end
-
-      def switches_state(switch)
-        switches[switch] && switches[switch][:state]
-      end
-
-      def switches_from(switch)
-        switches[switch] && switches[switch][:from]
+      def storage
+        @storage ||= Ruboty::ToggleSwitch::Storage.new(robot.brain)
       end
     end
   end
