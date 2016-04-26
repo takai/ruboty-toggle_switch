@@ -15,14 +15,14 @@ gem 'ruboty-toggle_switch'
 ## Usage
 
 ```
-> ruboty toggle radio switch on
-radio switch is now on.
-> ruboty show radio switch status
-radio switch is on.
-> ruboty toggle radio switch off
-radio switch is now off.
-> ruboty show radio switch status
-radio switch is off.
+> ruboty: toggle switch on
+switch is now on.
+> ruboty: show switch status
+switch is on on Apr 27 at 06:29.
+> ruboty: toggle switch off for good sleeping
+switch is now off.
+> ruboty: show switch status
+switch is off for good sleeping on Apr 27 at 06:30.
 ```
 
 ## API
