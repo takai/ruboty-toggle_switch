@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Ruboty::ToggleSwitch do
+describe Ruboty::Handlers::ToggleSwitch do
   let(:robot) { Ruboty::Robot.new }
   let(:from) { 'alice' }
 
