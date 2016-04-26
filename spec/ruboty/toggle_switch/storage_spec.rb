@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Ruboty::ToggleSwitch::Storage do
   subject(:storage) { Ruboty::ToggleSwitch::Storage.new(brain) }
-  let(:brain) { double('brain', data: {}) }
+  let(:brain) { Ruboty::Brains::Memory.new }
   let(:key) { 'key' }
 
   describe '#[](key)' do
