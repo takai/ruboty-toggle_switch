@@ -24,3 +24,13 @@ radio switch is now off.
 > ruboty show radio switch status
 radio switch is off.
 ```
+
+## API
+
+Use `Ruboty::ToggleSwitch::Storage` to get the state of switch from another handlers:
+
+```ruby
+storage = Ruboty::ToggleSwitch::Storage.new(robot.brain)
+record  = storage['switch']
+record.status # => 'on' or 'off'
+```
