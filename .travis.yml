@@ -3,3 +3,11 @@ rvm:
   - 2.3.0
 cache: bundler
 sudo: false
+deploy:
+  provider: rubygems
+  api_key:
+    secure: lpWEA88TEJ3dajzamEJyqfZJmFV44E/UDfvAjEvf2+tnZxA4E9goOlIP3iS8QZwaWHTCPbB8PUWMRX6Zumdbcnzx314i9dFcH+oiiypJO+Y2UxViGuB1WWwVye4EEEcsRCE82g5qi73/ALuFRi3TtQgRtzCgfTgzDGA2uS/gZtj9Al3B7AytdvmExCy5j6vB7WrU7YjTOFWGrqYQGSMo+ccS2fwJL2kMYAEBgF26Sx1oX9uhhokVvlA0kyFc04WFpdq7tAJxZYkGe4sFIMJ9+d9x5ZytDLjv96RWEl0z7Jxj1rOcUtc/zoFgd4jyszn8rMKkCeJSSYUCgZmVjz8D4iw0xXWRdnuuxjL856/PW3mN8ETRxlRWKG0ohdR5Tgk26reWlBBUWkvPBtjSkukO13DWWO5R7FJOawjA5y3iN24MjPbQOgUvC+YtvANjbIaAyyrZL4oCahgZyfDBeq3i22kE1cYc5oMQr5MfSoG+4XpspkpFgr3b0bmkANSD4fx0b/Ey0YbUUx+Glbx0StosH8DyUQvSdvBwbGfla6KJXRaUDZMNm130bmzBTbhnhQVEvWS6ahuZ7e5vgeouaqsZ6qexUf/XYpfHLCmRMGktGWaak4aL9j6qe9sP7j96jIoIlokBnKWMtmC2jaJClR5deZtQSpAHBWk4oLp4laZZ92k=
+  gem: ruboty-toggle_switch
+  on:
+    tags: true
+    repo: takai/ruboty-toggle_switch
