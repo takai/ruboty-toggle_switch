@@ -3,7 +3,7 @@ module Ruboty
     class Storage
       include Enumerable
 
-      Record = Struct.new(:state, :from, :at, :note)
+      Switch = Struct.new(:state, :from, :at, :note)
 
       NAMESPACE = 'ruboty-toggle_switch-storage'
 
@@ -12,11 +12,11 @@ module Ruboty
       end
 
       def [](key)
-        records[key]
+        switches[key]
       end
 
       def []=(key, value)
-        records[key] = Record.new(value[:state], value[:from], Time.now, value[:note])
+        switches[key] = Switch.new(value[:state], value[:from], Time.now, value[:note])
       end
 
       def on?(key)
@@ -28,22 +28,22 @@ module Ruboty
       end
 
       def each
-        records.each do |entry|
+        switches.each do |entry|
           yield(*entry)
         end
       end
 
       def size
-        records.size
+        switches.size
       end
 
       private
 
       def state_for(key)
-        records[key] && records[key].state
+        switches[key] && switches[key].state
       end
 
-      def records
+      def switches
         @brain.data[NAMESPACE] ||= {}
       end
     end
