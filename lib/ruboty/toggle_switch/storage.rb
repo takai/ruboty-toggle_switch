@@ -1,6 +1,8 @@
 module Ruboty
   module ToggleSwitch
     class Storage
+      include Enumerable
+
       Record = Struct.new(:state, :from, :at, :note)
 
       NAMESPACE = 'ruboty-toggle_switch-storage'
@@ -23,6 +25,16 @@ module Ruboty
 
       def off?(key)
         state_for(key) == 'off'
+      end
+
+      def each
+        records.each do |entry|
+          yield(*entry)
+        end
+      end
+
+      def size
+        records.size
       end
 
       private

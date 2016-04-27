@@ -26,6 +26,13 @@ describe Ruboty::Handlers::ToggleSwitch do
         robot.receive(body: "#{robot.name} show switch status")
       end
     end
+
+    describe '#list' do
+      it do
+        expect(robot).not_to receive(:say)
+        robot.receive(body: "#{robot.name} list switches")
+      end
+    end
   end
 
   context 'switch is on' do
@@ -50,6 +57,13 @@ describe Ruboty::Handlers::ToggleSwitch do
       it do
         expect(robot).to receive(:say).with(hash_including(body: /switch is on by #{from} on \w+ \d+ at \d\d:\d\d/))
         robot.receive(body: "#{robot.name} show switch status")
+      end
+    end
+
+    describe '#list' do
+      it do
+        expect(robot).to receive(:say).with(hash_including(body: /- switch is on/))
+        robot.receive(body: "#{robot.name} list switches")
       end
     end
   end
@@ -87,6 +101,13 @@ describe Ruboty::Handlers::ToggleSwitch do
       it do
         expect(robot).to receive(:say).with(hash_including(body: /switch is off by #{from} on \w+ \d+ at \d\d:\d\d/))
         robot.receive(body: "#{robot.name} show switch status")
+      end
+    end
+
+    describe '#list' do
+      it do
+        expect(robot).to receive(:say).with(hash_including(body: /- switch is off/))
+        robot.receive(body: "#{robot.name} list switches")
       end
     end
   end
