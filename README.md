@@ -37,7 +37,7 @@ switch is off for good sleeping on Apr 27 at 06:30.
 
 ## API
 
-Use `Ruboty::ToggleSwitch::Storage` to get the state of switch from another handlers:
+Use `Ruboty::ToggleSwitch::Storage` to get the state of switch from other handlers:
 
 ```ruby
 storage = Ruboty::ToggleSwitch::Storage.new(robot.brain)
